@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{62D2AE22-2A7E-4824-BC90-9735920F5F4D}</ProjectGuid>
+    <RootNamespace>lab2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <!--
+    Windows SDK fallback.
+    Visual Studio 2013 normally picks up the Windows 8.1 SDK automatically.
+    If that SDK is missing or incomplete on this machine (MSBuild reports
+    warning MSB8003 and the compiler cannot find GL/gl.h), fall back to the
+    Windows 7.1A SDK that older Visual Studio installs leave behind.
+    On a machine with a healthy Windows 8.1 SDK this block does nothing.
+  -->
+  <PropertyGroup>
+    <LegacyWindowsSdkDir>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A</LegacyWindowsSdkDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(WindowsSDK_IncludePath)'=='' And Exists('$(LegacyWindowsSdkDir)\Include')">
+    <IncludePath>$(VC_IncludePath);$(LegacyWindowsSdkDir)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath);$(LegacyWindowsSdkDir)\Lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(VC_ExecutablePath_x86);$(LegacyWindowsSdkDir)\Bin;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="iMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameConfig.h" />
+    <ClInclude Include="GameAudio.h" />
+    <ClInclude Include="GameUI.h" />
+    <ClInclude Include="GameAssets.h" />
+    <ClInclude Include="Level01.h" />
+    <ClInclude Include="Level01Draw.h" />
+    <ClInclude Include="Level02.h" />
+    <ClInclude Include="Level02Draw.h" />
+    <ClInclude Include="Level03.h" />
+    <ClInclude Include="Level03Draw.h" />
+    <ClInclude Include="Level04.h" />
+    <ClInclude Include="Level04Draw.h" />
+    <ClInclude Include="ScreenMenu.h" />
+    <ClInclude Include="ScreenLevelSelect.h" />
+    <ClInclude Include="ScreenAbout.h" />
+    <ClInclude Include="ScreenKeys.h" />
+    <ClInclude Include="ScreenLevel.h" />
+    <ClInclude Include="iGraphics.h" />
+    <ClInclude Include="bitmap_loader.h" />
+    <ClInclude Include="glut.h" />
+    <ClInclude Include="glaux.h" />
+    <ClInclude Include="stb_image.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
